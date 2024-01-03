@@ -7,19 +7,17 @@ import com.advjava.java_generics.challenge.ticket_machine.tickets.Ticket;
 
 public class TicketMachine {
 
-    public static <T extends Ticket> List<T> flattenList(List<List<? extends Ticket>> list) {
+    // Maneira de usar wildcards sem method references (precisa usar wildcard na
+    // lista tbm)
+    public static <T> List<T> flattenList(List<? extends List<? extends T>> nestedList) {
         List<T> flattenedList = new ArrayList<>();
-
-        for (List<? extends Ticket> sublist : list) {
-            for (Ticket ticket : sublist) {
-                flattenedList.add((T) ticket);
-            }
+        for (List<? extends T> innerList : nestedList) {
+            flattenedList.addAll(innerList);
         }
-
         return flattenedList;
     }
 
-    public static int getTotalPrice(List<Ticket> tickets) {
+    public static int getTotalPrice(List<? extends Ticket> tickets) {
         int totalPrice = 0;
         for (Ticket ticket : tickets) {
             totalPrice += ticket.getPrice();
