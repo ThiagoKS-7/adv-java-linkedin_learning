@@ -1,4 +1,4 @@
-package com.advjava.generics;
+package com.advjava.java_generics.generics;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,7 @@ import java.util.List;
  * Generics example
  *
  */
-public class App {
+public class Generics {
     public static void main(String[] args) {
         // Com generics
         List<String> formas = new ArrayList<>();
